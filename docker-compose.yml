@@ -1,0 +1,42 @@
+
+services:
+  web:
+    build:
+      context: web-service
+      dockerfile: Dockerfile
+    image: priyanka-web-service
+    ports:
+      - "8080:8081"
+    depends_on:
+      - db
+      - redis
+      - worker
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+  worker:
+    build:
+      context: worker-service
+      dockerfile: Dockerfile
+    image: priyanka-worker-service
+    depends_on:
+      - redis
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+  db:
+    image: postgres:13
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Expose port for host access if needed
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379" # Expose port for host access if needed
+volumes:
+  db_data:

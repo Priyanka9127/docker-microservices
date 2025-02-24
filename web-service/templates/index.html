@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin: 10px 0;
+        }
+        .info {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Service</h1>
+        <p><strong>Name:</strong> <span class="info">{{ name }}</span></p>
+        <p><strong>Roll Number:</strong> <span class="info">{{ roll_number }}</span></p>
+        <p><strong>Bio:</strong> <span class="info">{{ bio }}</span></p>
+        <p><strong>Container ID:</strong> <span class="info">{{ container_id }}</span></p>
+        <p><strong>Current Time:</strong> <span class="info">{{ current_time }}</span></p>
+    </div>
+</body>
+</html>
